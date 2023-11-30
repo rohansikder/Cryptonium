@@ -2,9 +2,9 @@
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-7f7980b617ed060a017424585567c406b6ee15c891e84e1186181d67ecf80aa0.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=12998174)
 # Final Project
 
-**Title:** Items Application Manager  
-**Name:** Patrick Murphy  
-**Student ID:** G00123456  
+**Title:** Cryptonium
+**Name:** Rohan Sikder
+**Student ID:** G00389052  
 
 ## Application Function
 
@@ -55,4 +55,4 @@ Discuss the issues you faced with creating your application. Provide possible so
 
 Provide links to resources used:
 
-* [YouTube](https://www.youtube.com/watch?v=Y0vH5Cm3HAk) - YouTube Tutorial I found helpful
+* [Crypto API](https://docs.coincap.io/#d8fd6001-e127-448d-aadd-bfbfe2c89dbe) - Crypto API used to get crypto data
