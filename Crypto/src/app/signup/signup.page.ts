@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { AuthenticationService } from '../services/authentication.service'; // Adjust the path as necessary
 
 @Component({
   selector: 'app-signup',
@@ -8,9 +11,31 @@ import { Component } from '@angular/core';
 export class SignupPage {
   user = { email: '', password: '' };
 
-  constructor() {}
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router,
+    private alertController: AlertController
+  ) {}
 
-  signup() {
+  async signup() {
+    try {
+      const result = await this.authService.signup(this.user.email, this.user.password);
+      console.log('Signup successful', result);
+      this.showAlert('Signup Successful', 'Your account has been created.');
+      this.router.navigate(['/login']); 
+    } catch (error) {
+      const errorMessage = (error instanceof Error) ? error.message : 'An unknown error occurred';
+      this.showAlert('Signup Failed', errorMessage);
+    }
+  }
 
+  async showAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }
