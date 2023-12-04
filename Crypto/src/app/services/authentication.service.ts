@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, signInWithEmailAndPassword,createUserWithEmailAndPassword, signOut, authState} from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword,createUserWithEmailAndPassword, signOut, authState, sendPasswordResetEmail } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,11 @@ export class AuthenticationService {
   // Signup Method
   async signup(email: string, password: string): Promise<any> {
     return createUserWithEmailAndPassword(this.auth, email, password);
+  }
+
+  // Reset Password Method
+  resetPassword(email: string): Promise<void> {
+    return sendPasswordResetEmail(this.auth, email);
   }
 
   // Login Method
