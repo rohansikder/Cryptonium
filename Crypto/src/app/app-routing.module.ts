@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'reset-password',
     loadChildren: () => import('./reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
+  },
+  {
+    path: 'crypto-detail/:name',
+    loadChildren: () => import('./crypto-detail/crypto-detail.module').then( m => m.CryptoDetailPageModule)
   }
 ];
 @NgModule({

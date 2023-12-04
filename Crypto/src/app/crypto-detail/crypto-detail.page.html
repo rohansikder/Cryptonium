@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title *ngIf="cryptoDetails">{{ cryptoDetails?.name }} Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" *ngIf="cryptoDetails">{{ cryptoDetails?.name }} Details</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <div *ngIf="cryptoDetails">
+    <h1>{{ cryptoDetails?.name }} ({{ cryptoDetails?.symbol }})</h1>
+    <p><strong>Rank:</strong> {{ cryptoDetails?.rank }}</p>
+    <p><strong>Price:</strong> ${{ cryptoDetails?.priceUsd | number:'1.2-2' }}</p>
+    <p><strong>Market Cap:</strong> ${{ cryptoDetails?.marketCapUsd | number }}</p>
+    <p><strong>24h Volume:</strong> ${{ cryptoDetails?.volumeUsd24Hr | number }}</p>
+    <p><strong>24h Change:</strong> {{ cryptoDetails?.changePercent24Hr | number:'1.2-2' }}%</p>
+    <p><strong>Supply:</strong> {{ cryptoDetails?.supply | number }} {{ cryptoDetails?.symbol }}</p>
+    <p><strong>Max Supply:</strong> {{ cryptoDetails?.maxSupply | number }}</p>
+    <p><strong>VWAP (24Hr):</strong> ${{ cryptoDetails?.vwap24Hr | number:'1.2-2' }}</p>
+    <a href="{{ cryptoDetails?.explorer }}" target="_blank">Explore on Blockchain</a>
+  </div>
+</ion-content>
+
