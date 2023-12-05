@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CryptoService } from '../services/crypto.service'; 
-
+import { CryptoService } from '../services/crypto.service';
 
 @Component({
   selector: 'app-crypto-detail',
@@ -14,7 +13,7 @@ export class CryptoDetailPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private cryptoService: CryptoService
+    private cryptoService: CryptoService,
   ) {}
 
   ngOnInit() {
@@ -23,6 +22,7 @@ export class CryptoDetailPage implements OnInit {
       if (cryptoNameParam) {
         this.cryptoName = cryptoNameParam;
         this.loadCryptoDetails(this.cryptoName);
+        this.loadCandlestickData(this.cryptoName); 
       } else {
         console.error('Crypto name parameter is missing');
       }
@@ -37,5 +37,23 @@ export class CryptoDetailPage implements OnInit {
       console.error(error);
     });
   }
-  
+
+  // Api does not work
+  loadCandlestickData(cryptoId: string) {
+    // Example parameters for getCryptoCandles
+    const baseId = cryptoId;  // The crypto ID
+    const quoteId = 'usd';    // Comparing against USD
+    const interval = 'd1';    // Daily candles
+    const exchange = 'binance'; // Example exchange
+
+    this.cryptoService.getCryptoCandles(baseId, quoteId, interval, exchange)
+      .then(candleData => {
+        console.log('Candle Data:',candleData);
+      }).catch(error => {
+        console.error('Error fetching candlestick data:', error);
+      });
+  }
+
+
+
 }

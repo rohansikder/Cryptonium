@@ -42,9 +42,15 @@ export class CryptoService {
         quoteId: quoteId.toLowerCase() // e.g., 'bitcoin'
       }
     })
-    .then(response => response.data)
+    .then(response => {
+      console.log('Response from getCryptoCandles:', response.data);
+  
+      return response.data;
+    })
     .catch(error => {
+      console.error('Error in getCryptoCandles:', error);
       throw error;
     });
   }
+  
 }

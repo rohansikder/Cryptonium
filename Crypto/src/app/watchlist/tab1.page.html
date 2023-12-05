@@ -18,11 +18,13 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-searchbar (ionInput)="searchCrypto($event)" placeholder="Search"></ion-searchbar>
+
   <ion-list>
-    <ion-item *ngFor="let crypto of cryptoList" [routerLink]="['/crypto-detail', crypto.name]">
+    <ion-item *ngFor="let crypto of filteredCryptoList" [routerLink]="['/crypto-detail', crypto.name]">
       <ion-label>
         <h2>{{ crypto.name }}</h2>
-        <p>Price: ${{ crypto.priceUsd }}</p>
+        <p>Price: ${{ crypto.priceUsd | number: '1.2-2' }}</p>
       </ion-label>
     </ion-item>
   </ion-list>

@@ -9,6 +9,8 @@ import { environment } from '../environments/environment';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
+import { NgApexchartsModule } from 'ng-apexcharts';
+
 
 
 
@@ -23,6 +25,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgApexchartsModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), // Initializes Firebase app with config.
     provideAuth(() => getAuth()) // Initializes Firebase Authentication service.
   ],

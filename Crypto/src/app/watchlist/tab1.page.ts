@@ -9,6 +9,7 @@ import { CryptoService } from '../services/crypto.service';
 export class Tab1Page implements OnInit {
 
   cryptoList: any[] = [];
+  filteredCryptoList: any[] = [];
 
   constructor(private cryptoService: CryptoService) {}
 
@@ -20,10 +21,25 @@ export class Tab1Page implements OnInit {
     this.cryptoService.getTop20Cryptos() 
       .then(data => {
         this.cryptoList = data;
+        this.filteredCryptoList = this.cryptoList; // Initialize filtered list
         console.log(data);
       })
       .catch(error => {
         console.error('Error fetching crypto list:', error);
       });
+  }
+
+  searchCrypto(event: any) {
+    const searchTerm = event.detail.value.toLowerCase();
+
+    if (!searchTerm) {
+      this.filteredCryptoList = this.cryptoList;
+      return;
+    }
+
+    this.filteredCryptoList = this.cryptoList.filter(crypto => {
+      return crypto.name.toLowerCase().includes(searchTerm) || 
+             crypto.symbol && crypto.symbol.toLowerCase().includes(searchTerm);
+    });
   }
 }
