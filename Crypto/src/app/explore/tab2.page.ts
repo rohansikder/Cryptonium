@@ -18,11 +18,11 @@ export class Tab2Page implements OnInit {
     }
 
     loadTrades() {
-        this.databaseManagerService.getTrades().subscribe(
-            data => {
+        this.databaseManagerService.getTradesForCurrentUser().subscribe(
+            (data: any[]) => {
                 this.trades = data;
             },
-            error => {
+            (error: any) => {
                 console.error('Error loading trades: ', error);
             }
         );

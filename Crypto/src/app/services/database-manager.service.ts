@@ -1,25 +1,58 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireAuth } from '@angular/fire/compat/auth'; 
+import { Observable, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DatabaseManagerService {
+  getTradesForCurrentUser(): Observable<any[]> {
+    return this.auth.user.pipe(
+      switchMap(user => {
+        if (user) {
+          const userEmail = user.email || '';
+          return this.getTradesByUserEmail(userEmail);
+        } else {
+          console.error('No authenticated user found.');
+          return [];
+        }
+      })
+    );
+  }
+  
+  private getTradesByUserEmail(userEmail: string): Observable<any[]> {
+    return this.firestore.collection('trades', ref =>
+      ref.where('ownerEmail', '==', userEmail)
+    ).valueChanges();
+  }
+  
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(
+    private firestore: AngularFirestore,
+    private auth: AngularFireAuth 
+  ) { }
 
   async saveData(buyPrice: number, symbol: string, takeProfit: number, stopLoss: number, notes: string) {
-    const data = { buyPrice, symbol, takeProfit, stopLoss, notes };
     try {
-      await this.firestore.collection('trades').add(data);
-      console.log('Data saved successfully');
+      const user = await this.auth.currentUser; 
+      if (user) {
+        const userEmail = user.email; 
+        const data = {
+          buyPrice,
+          symbol,
+          takeProfit,
+          stopLoss,
+          notes,
+          ownerEmail: userEmail 
+        };
+        await this.firestore.collection('trades').add(data);
+        console.log('Data saved successfully');
+      } else {
+        console.error('No authenticated user found.');
+      }
     } catch (error) {
       console.error('Error saving data: ', error);
     }
   }
-
-  getTrades() {
-    return this.firestore.collection('trades').valueChanges(); 
-  }
-  
 }
