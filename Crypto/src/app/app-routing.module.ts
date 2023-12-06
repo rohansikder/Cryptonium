@@ -21,6 +21,10 @@ const routes: Routes = [
   {
     path: 'crypto-detail/:name',
     loadChildren: () => import('./crypto-detail/crypto-detail.module').then( m => m.CryptoDetailPageModule)
+  },
+  {
+    path: 'add-trade',
+    loadChildren: () => import('./add-trade/add-trade.module').then( m => m.AddTradePageModule)
   }
 ];
 @NgModule({

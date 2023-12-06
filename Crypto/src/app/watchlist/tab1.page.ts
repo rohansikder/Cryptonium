@@ -11,14 +11,14 @@ export class Tab1Page implements OnInit {
   cryptoList: any[] = [];
   filteredCryptoList: any[] = [];
 
-  constructor(private cryptoService: CryptoService) {}
+  constructor(private cryptoService: CryptoService) { }
 
   ngOnInit() {
     this.loadCryptoList();
   }
 
   loadCryptoList() {
-    this.cryptoService.getTop20Cryptos() 
+    this.cryptoService.getTop20Cryptos()
       .then(data => {
         this.cryptoList = data;
         this.filteredCryptoList = this.cryptoList; // Initialize filtered list
@@ -38,8 +38,8 @@ export class Tab1Page implements OnInit {
     }
 
     this.filteredCryptoList = this.cryptoList.filter(crypto => {
-      return crypto.name.toLowerCase().includes(searchTerm) || 
-             crypto.symbol && crypto.symbol.toLowerCase().includes(searchTerm);
+      return crypto.name.toLowerCase().includes(searchTerm) ||
+        crypto.symbol && crypto.symbol.toLowerCase().includes(searchTerm);
     });
   }
 }
