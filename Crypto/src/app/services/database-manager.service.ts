@@ -17,4 +17,9 @@ export class DatabaseManagerService {
       console.error('Error saving data: ', error);
     }
   }
+
+  getTrades() {
+    return this.firestore.collection('trades').valueChanges(); 
+  }
+  
 }
