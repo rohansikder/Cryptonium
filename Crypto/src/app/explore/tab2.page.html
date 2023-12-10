@@ -26,6 +26,9 @@
         <p>Stop Loss: {{ trade.stopLoss }}</p>
         <p>Notes: {{ trade.notes }}</p>
       </ion-label>
-    </ion-item>
+      <ion-button slot="end" (click)="confirmDelete(trade)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item> 
   </ion-list>
 </ion-content>

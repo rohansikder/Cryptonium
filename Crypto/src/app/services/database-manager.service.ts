@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth'; 
-import { Observable, switchMap } from 'rxjs';
+import { Observable, map, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DatabaseManagerService {
+  http: any;
   getTradesForCurrentUser(): Observable<any[]> {
     return this.auth.user.pipe(
       switchMap(user => {
@@ -24,8 +25,16 @@ export class DatabaseManagerService {
   private getTradesByUserEmail(userEmail: string): Observable<any[]> {
     return this.firestore.collection('trades', ref =>
       ref.where('ownerEmail', '==', userEmail)
-    ).valueChanges();
+    ).snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        // Ensure data is an object before spreading
+        return { id, ...(typeof data === 'object' && data ? data : {}) };
+      }))
+    );
   }
+  
   
 
   constructor(
@@ -54,6 +63,12 @@ export class DatabaseManagerService {
     } catch (error) {
       console.error('Error saving data: ', error);
     }
+  }
+  
+  deleteTrade(tradeId: string) {
+    return this.firestore.collection('trades').doc(tradeId).delete()
+      .then(() => console.log('Trade successfully deleted'))
+      .catch((error) => console.error('Error deleting trade: ', error));
   }
   
 }
