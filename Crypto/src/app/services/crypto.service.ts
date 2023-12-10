@@ -25,6 +25,7 @@ export class CryptoService {
 
   getCryptoDetails(cryptoId: string): Promise<any> {
     const lowerCaseCryptoId = cryptoId.toLowerCase();
+    console.log(`Fetching details for crypto: ${lowerCaseCryptoId}`); // Check if this logs
 
     return axios.get(`${this.apiUrl}/assets/${lowerCaseCryptoId}`)
       .then(response => response.data)

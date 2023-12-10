@@ -24,7 +24,11 @@
         <p>Buy Price: {{ trade.buyPrice }}</p>
         <p>Take Profit: {{ trade.takeProfit }}</p>
         <p>Stop Loss: {{ trade.stopLoss }}</p>
-        <p>Notes: {{ trade.notes }}</p>
+        <p>Notes: {{ trade.notes }}</p> 
+        <p>Current Price: {{ trade.currentPrice | number: '1.2-2'}}</p>
+        <p>Status: {{ trade.isProfit ? 'Profit' : 'Loss' }}</p>
+        <p *ngIf="trade.isStopLossHit">Stop Loss Hit</p>
+        <p *ngIf="trade.isTakeProfitHit">Take Profit Hit</p>
       </ion-label>
       <ion-button slot="end" (click)="confirmDelete(trade)">
         <ion-icon name="trash"></ion-icon>
