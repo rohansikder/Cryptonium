@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DatabaseManagerService } from '../services/database-manager.service';
 import { Router } from '@angular/router';
 
@@ -7,13 +7,15 @@ import { Router } from '@angular/router';
     templateUrl: 'tab2.page.html',
     styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page implements OnInit {
+export class Tab2Page {
     trades: any[] = [];
 
-    constructor(private databaseManagerService: DatabaseManagerService, private router: Router
+    constructor(
+        private databaseManagerService: DatabaseManagerService,
+        private router: Router
     ) { }
 
-    ngOnInit() {
+    ionViewDidEnter() {
         this.loadTrades();
     }
 

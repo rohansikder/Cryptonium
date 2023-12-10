@@ -55,4 +55,5 @@ export class DatabaseManagerService {
       console.error('Error saving data: ', error);
     }
   }
+  
 }
