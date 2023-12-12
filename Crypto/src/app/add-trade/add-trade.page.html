@@ -11,28 +11,38 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list>
-    <ion-item>
-      <ion-label position="floating">Symbol</ion-label>
-      <ion-input [(ngModel)]="symbol"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Buy Price</ion-label>
-      <ion-input [(ngModel)]="buyPrice" type="number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Take Profit</ion-label>
-      <ion-input [(ngModel)]="takeProfit" type="number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Stop Loss</ion-label>
-      <ion-input [(ngModel)]="stopLoss" type="number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Notes</ion-label>
-      <ion-textarea [(ngModel)]="notes"></ion-textarea>
-    </ion-item>
-  </ion-list>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Symbol</ion-label>
+          <ion-input placeholder="Symbol" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Buy Price</ion-label>
+          <ion-input type="number" placeholder="Buy Price" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Take Profit</ion-label>
+          <ion-input type="number" placeholder="Take Profit" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Stop Loss</ion-label>
+          <ion-input type="number" placeholder="Stop Loss" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Notes</ion-label>
+          <ion-textarea placeholder="Notes" required></ion-textarea>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 
-  <ion-button expand="full" (click)="saveTrade()">Save Trade</ion-button>
+  <ion-button expand="full" (click)="saveTrade()" [disabled]="!isValidForm()" shape="round" color="success">
+    Save Trade
+  </ion-button>
+
+  <ion-button expand="full" routerLink="/" shape="round" color="primary">
+    Home
+  </ion-button>
 </ion-content>

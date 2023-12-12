@@ -58,4 +58,8 @@ export class AddTradePage implements OnInit {
     });
     await alert.present();
   }
+
+  isValidForm(): boolean {
+    return !!this.symbol && !!this.buyPrice && !!this.takeProfit && !!this.stopLoss && !!this.notes;
+  }
 }

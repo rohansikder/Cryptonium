@@ -3,6 +3,7 @@ import { DatabaseManagerService } from '../services/database-manager.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { CryptoService } from '../services/crypto.service';
+import { LoadingController } from '@ionic/angular';
 
 
 @Component({
@@ -19,10 +20,12 @@ export class Tab2Page {
         private databaseManagerService: DatabaseManagerService,
         private cryptoService: CryptoService,
         private router: Router,
-        private alertController: AlertController
+        private alertController: AlertController,
+        private loadingController: LoadingController
     ) { }
 
     ionViewDidEnter() {
+      this.presentLoading();
         this.loadTrades();
       }
     
@@ -32,10 +35,17 @@ export class Tab2Page {
             Promise.all(data.map(trade => this.updateTradeWithCurrentPrice(trade)))
               .then(updatedTrades => {
                 this.trades = updatedTrades;
+                this.loadingController.dismiss(); 
               })
-              .catch(error => console.error('Error updating trades:', error));
+              .catch(error => {
+                console.error('Error updating trades:', error);
+                this.loadingController.dismiss(); 
+              });
           },
-          (error: any) => console.error('Error loading trades:', error)
+          (error: any) => {
+            console.error('Error loading trades:', error);
+            this.loadingController.dismiss(); 
+          }
         );
       }
     
@@ -87,5 +97,15 @@ export class Tab2Page {
         });
 
         await alert.present();
+    }
+
+    async presentLoading() {
+      const loading = await this.loadingController.create({
+        message: 'Loading trades...',
+        spinner: 'dots', 
+        translucent: true
+      });
+    
+      await loading.present();
     }
 }

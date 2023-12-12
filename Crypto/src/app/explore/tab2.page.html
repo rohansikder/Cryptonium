@@ -9,7 +9,6 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -18,21 +17,24 @@
   </ion-header>
 
   <ion-list>
-    <ion-item *ngFor="let trade of trades">
-      <ion-label>
-        <h2>Symbol: {{ trade.symbol }}</h2>
-        <p>Buy Price: {{ trade.buyPrice }}</p>
-        <p>Take Profit: {{ trade.takeProfit }}</p>
-        <p>Stop Loss: {{ trade.stopLoss }}</p>
-        <p>Notes: {{ trade.notes }}</p> 
-        <p>Current Price: {{ trade.currentPrice | number: '1.2-2'}}</p>
-        <p>Status: {{ trade.isProfit ? 'Profit' : 'Loss' }}</p>
-        <p *ngIf="trade.isStopLossHit">Stop Loss Hit</p>
-        <p *ngIf="trade.isTakeProfitHit">Take Profit Hit</p>
-      </ion-label>
-      <ion-button slot="end" (click)="confirmDelete(trade)">
-        <ion-icon name="trash"></ion-icon>
-      </ion-button>
-    </ion-item> 
+    <ion-card *ngFor="let trade of trades">
+      <ion-card-header>
+        <ion-card-title>Symbol: {{ trade.symbol }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Buy Price:</strong> {{ trade.buyPrice | number: '1.2-2' }}</p>
+        <p><strong>Take Profit:</strong> {{ trade.takeProfit | number: '1.2-2' }}</p>
+        <p><strong>Stop Loss:</strong> {{ trade.stopLoss | number: '1.2-2' }}</p>
+        <p><strong>Notes:</strong> {{ trade.notes }}</p>
+        <p><strong>Current Price:</strong> {{ trade.currentPrice | number: '1.2-2'}}</p>
+        <p><strong>Status:</strong> {{ trade.isProfit ? 'Profit' : 'Loss' }}</p>
+        <p *ngIf="trade.isStopLossHit"><ion-badge color="danger">Stop Loss Hit</ion-badge></p>
+        <p *ngIf="trade.isTakeProfitHit"><ion-badge color="success">Take Profit Hit</ion-badge></p>
+
+        <ion-button fill="outline" color="danger" slot="end" expand="full"  (click)="confirmDelete(trade)">
+          <ion-icon name="trash"></ion-icon> Delete
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
   </ion-list>
 </ion-content>
