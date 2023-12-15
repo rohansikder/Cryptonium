@@ -1,11 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Trades</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="navigateToAddTrade()">
-        <ion-icon slot="icon-only" name="add"></ion-icon>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -37,4 +32,10 @@
       </ion-card-content>
     </ion-card>
   </ion-list>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="center">
+    <ion-fab-button (click)="navigateToAddTrade()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

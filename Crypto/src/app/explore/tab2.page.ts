@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { CryptoService } from '../services/crypto.service';
 import { LoadingController } from '@ionic/angular';
-
+import { Plugins } from '@capacitor/core';
+const { LocalNotifications } = Plugins
 
 @Component({
     selector: 'app-tab2',
@@ -28,6 +29,8 @@ export class Tab2Page {
       this.presentLoading();
         this.loadTrades();
       }
+
+      
     
       loadTrades() {
         this.databaseManagerService.getTradesForCurrentUser().subscribe(
@@ -35,30 +38,69 @@ export class Tab2Page {
             Promise.all(data.map(trade => this.updateTradeWithCurrentPrice(trade)))
               .then(updatedTrades => {
                 this.trades = updatedTrades;
-                this.loadingController.dismiss(); 
               })
               .catch(error => {
                 console.error('Error updating trades:', error);
-                this.loadingController.dismiss(); 
               });
           },
           (error: any) => {
             console.error('Error loading trades:', error);
-            this.loadingController.dismiss(); 
           }
         );
       }
     
-      updateTradeWithCurrentPrice(trade: { symbol: string; buyPrice: number; stopLoss: number; takeProfit: number; }) {
+      async updateTradeWithCurrentPrice(trade: { symbol: string; buyPrice: number; stopLoss: number; takeProfit: number; }) {
         return this.cryptoService.getCryptoDetails(trade.symbol).then(data => {
           const currentPrice = parseFloat(data.data.priceUsd);
-          return {
+          const updatedTrade = {
             ...trade,
             currentPrice,
             isProfit: currentPrice > trade.buyPrice,
             isStopLossHit: trade.stopLoss && currentPrice <= trade.stopLoss,
             isTakeProfitHit: trade.takeProfit && currentPrice >= trade.takeProfit
           };
+      
+          if (updatedTrade.isStopLossHit) {
+            // Send a notification when the stop loss is hit
+            this.sendStopLossNotification(updatedTrade);
+          }
+      
+          if (updatedTrade.isTakeProfitHit) {
+            // Send a notification when the take profit is hit
+            this.sendTakeProfitNotification(updatedTrade);
+          }
+      
+          return updatedTrade;
+        });
+      }
+
+      async sendTakeProfitNotification(trade: any) {
+        await LocalNotifications['schedule']({
+          notifications: [
+            {
+              title: 'Take Profit Hit!',
+              body: `Your trade for ${trade.symbol} has hit the take profit price.`,
+              id: 3, 
+              schedule: { at: new Date() }, 
+              sound: 'default',
+              attachments: [],
+            },
+          ],
+        });
+      }
+
+      async sendStopLossNotification(trade: any) {
+        await LocalNotifications['schedule']({
+          notifications: [
+            {
+              title: 'Stop Loss Hit!',
+              body: `Your trade for ${trade.symbol} has hit the stop loss price.`,
+              id: 2,
+              schedule: { at: new Date() }, 
+              sound: 'default',
+              attachments: [],
+            },
+          ],
         });
       }
     
@@ -101,11 +143,16 @@ export class Tab2Page {
 
     async presentLoading() {
       const loading = await this.loadingController.create({
-        message: 'Loading trades...',
-        spinner: 'dots', 
-        translucent: true
+          message: 'Loading trades...',
+          spinner: 'dots',
+          translucent: true
       });
-    
+  
       await loading.present();
-    }
+  
+      
+      setTimeout(() => {
+          loading.dismiss();
+      }, 500); 
+  }
 }
