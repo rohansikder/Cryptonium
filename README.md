@@ -8,19 +8,15 @@
 
 ## Application Function
 
-Discuss, in detail, what the application does. Add a screenshot image of the application in use. 
+This app is a Cryptocurrency tracker, It shows the Top 20 Cryptos on the market currently which you can see details of. You can sign up the app via email and password and enter in your trades and track how it is doing.
+Add a screenshot image of the application in use. 
 
 ## Running the Application
 
-Provide step by step instructions on how to run your applicaiton. Are there any prerequisite softwares required?
-
 ```MARKDOWN
 List the instructions step by step
-    1. Install Angular CLI - npm install -g @angular/cli
-    2. Log in to Firebase - firebase login
-    3. ionic serve
-            :
-            :
+    1. Run the command 'npm install' in the Crypto Dir.
+    3. After all the dependencies have installed run the command 'ionic serve' in the Crypto Dir.
 ```
 
 ## Minimum Project Requirments
@@ -49,10 +45,10 @@ Add a screenshot of the application architecture.
 
 ## Roadblocks and Unfinished Functionality
 
+Issues I faces with this application was finding a robust api which has lots of functionality and which was working, Unfortunately this was difficult as the api I chose at the end , the candle api did not work which was intended to  be used to make a chart with various options for the user to choose from. Also i was having issues with npm and the dependency's I was trying as there where many I was playing around with this sort of broke npm which i ended up fixing.
+
 Discuss the issues you faced with creating your application. Provide possible solutions to these issues. What would you have done differently if you had to do this again? What did you not get finished?
 
 ## Resources
-
-Provide links to resources used:
 
 * [Crypto API](https://docs.coincap.io/#d8fd6001-e127-448d-aadd-bfbfe2c89dbe) - Crypto API used to get crypto data
