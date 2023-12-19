@@ -8,13 +8,16 @@ import { Router } from '@angular/router';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-  
 
-  constructor(private authService: AuthenticationService, private router: Router
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router
   ) { }
 
+  // Method called when the user wants to log out.
   logout() {
     this.authService.logout().then(() => {
+      // Redirect the user to the login page and force a reload of the application
       this.router.navigateByUrl('/login').then(() => {
         window.location.reload(); // This forces a reload of the application
       });

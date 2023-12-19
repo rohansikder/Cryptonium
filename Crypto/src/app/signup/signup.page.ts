@@ -15,20 +15,22 @@ export class SignupPage {
     private authService: AuthenticationService,
     private router: Router,
     private alertController: AlertController
-  ) {}
+  ) { }
 
+  // Attempt to sign up the user using provided email and password.
   async signup() {
     try {
       const result = await this.authService.signup(this.user.email, this.user.password);
       console.log('Signup successful', result);
       this.showAlert('Signup Successful', 'Your account has been created.');
-      this.router.navigate(['/login']); 
+      this.router.navigate(['/login']);
     } catch (error) {
       const errorMessage = (error instanceof Error) ? error.message : 'An unknown error occurred';
       this.showAlert('Signup Failed', errorMessage);
     }
   }
 
+  // Display an alert with a given header and message.
   async showAlert(header: string, message: string) {
     const alert = await this.alertController.create({
       header: header,

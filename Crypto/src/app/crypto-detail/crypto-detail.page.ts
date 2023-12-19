@@ -8,27 +8,30 @@ import { CryptoService } from '../services/crypto.service';
   styleUrls: ['./crypto-detail.page.scss'],
 })
 export class CryptoDetailPage implements OnInit {
+  // Properties to store crypto details and name
   cryptoDetails: any;
   cryptoName: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private cryptoService: CryptoService,
-  ) {}
+  ) { }
 
   ngOnInit() {
+    // Subscribe to route parameters to get the crypto name
     this.route.paramMap.subscribe(params => {
       const cryptoNameParam = params.get('name');
       if (cryptoNameParam) {
         this.cryptoName = cryptoNameParam;
         this.loadCryptoDetails(this.cryptoName);
-        this.loadCandlestickData(this.cryptoName); 
+        this.loadCandlestickData(this.cryptoName);
       } else {
         console.error('Crypto name parameter is missing');
       }
     });
   }
 
+  // Function to load crypto details
   loadCryptoDetails(cryptoId: string) {
     this.cryptoService.getCryptoDetails(cryptoId).then(data => {
       this.cryptoDetails = data.data;
@@ -38,7 +41,7 @@ export class CryptoDetailPage implements OnInit {
     });
   }
 
-  // Api does not work
+  // Function to load candlestick data (API not working)
   loadCandlestickData(cryptoId: string) {
     // Example parameters for getCryptoCandles
     const baseId = cryptoId;  // The crypto ID
@@ -48,12 +51,9 @@ export class CryptoDetailPage implements OnInit {
 
     this.cryptoService.getCryptoCandles(baseId, quoteId, interval, exchange)
       .then(candleData => {
-        console.log('Candle Data:',candleData);
+        console.log('Candle Data:', candleData);
       }).catch(error => {
         console.error('Error fetching candlestick data:', error);
       });
   }
-
-
-
 }

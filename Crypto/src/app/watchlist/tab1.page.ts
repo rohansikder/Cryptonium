@@ -17,6 +17,7 @@ export class Tab1Page implements OnInit {
     this.loadCryptoList();
   }
 
+  // Load the list of the top 20 cryptocurrencies.
   loadCryptoList() {
     this.cryptoService.getTop20Cryptos()
       .then(data => {
@@ -29,6 +30,7 @@ export class Tab1Page implements OnInit {
       });
   }
 
+  // Search for cryptocurrencies based on the user's input.
   searchCrypto(event: any) {
     const searchTerm = event.detail.value.toLowerCase();
 

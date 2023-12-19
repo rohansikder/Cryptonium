@@ -3,8 +3,6 @@ import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -12,20 +10,24 @@ import { AlertController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  //Login Data Model
+  // Login Data Model
   user = {
     email: '',
     password: ''
   };
 
-  constructor(private authService: AuthenticationService,private router: Router,private alertController: AlertController) {}
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router,
+    private alertController: AlertController
+  ) { }
 
   // Method called when the user attempts to log in.
   login() {
     this.authService.login(this.user.email, this.user.password)
       .then(res => {
         console.log('Successfully logged in', res);
-        // Bring user back to home page
+        // Redirect the user to the home page upon successful login
         this.router.navigate(['/']);
       })
       .catch(err => {
@@ -34,17 +36,17 @@ export class LoginPage implements OnInit {
       });
   }
 
+  // Display an alert dialog with a given header and message.
   async showAlert(header: string, message: string) {
     const alert = await this.alertController.create({
       header: header,
       message: message,
       buttons: ['OK']
     });
-  
+
     await alert.present();
   }
 
   ngOnInit() {
   }
-
 }

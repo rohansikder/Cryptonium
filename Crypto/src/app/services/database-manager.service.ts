@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { AngularFireAuth } from '@angular/fire/compat/auth'; 
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable, map, switchMap } from 'rxjs';
 
 @Injectable({
@@ -8,6 +8,13 @@ import { Observable, map, switchMap } from 'rxjs';
 })
 export class DatabaseManagerService {
   http: any;
+
+  constructor(
+    private firestore: AngularFirestore,
+    private auth: AngularFireAuth
+  ) { }
+
+  // Get trades for the currently authenticated user.
   getTradesForCurrentUser(): Observable<any[]> {
     return this.auth.user.pipe(
       switchMap(user => {
@@ -21,7 +28,8 @@ export class DatabaseManagerService {
       })
     );
   }
-  
+
+  // Get trades for a specific user by their email.
   private getTradesByUserEmail(userEmail: string): Observable<any[]> {
     return this.firestore.collection('trades', ref =>
       ref.where('ownerEmail', '==', userEmail)
@@ -34,26 +42,20 @@ export class DatabaseManagerService {
       }))
     );
   }
-  
-  
 
-  constructor(
-    private firestore: AngularFirestore,
-    private auth: AngularFireAuth 
-  ) { }
-
+  // Save trade data for the authenticated user.
   async saveData(buyPrice: number, symbol: string, takeProfit: number, stopLoss: number, notes: string) {
     try {
-      const user = await this.auth.currentUser; 
+      const user = await this.auth.currentUser;
       if (user) {
-        const userEmail = user.email; 
+        const userEmail = user.email;
         const data = {
           buyPrice,
           symbol,
           takeProfit,
           stopLoss,
           notes,
-          ownerEmail: userEmail 
+          ownerEmail: userEmail
         };
         await this.firestore.collection('trades').add(data);
         console.log('Data saved successfully');
@@ -64,11 +66,11 @@ export class DatabaseManagerService {
       console.error('Error saving data: ', error);
     }
   }
-  
+
+  // Delete a trade by its ID.
   deleteTrade(tradeId: string) {
     return this.firestore.collection('trades').doc(tradeId).delete()
       .then(() => console.log('Trade successfully deleted'))
       .catch((error) => console.error('Error deleting trade: ', error));
   }
-  
 }

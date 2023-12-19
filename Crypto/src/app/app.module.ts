@@ -4,18 +4,14 @@ import { RouteReuseStrategy } from '@angular/router';
 
 import { FormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { provideAuth, getAuth } from '@angular/fire/auth'; 
+import { provideAuth, getAuth } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
-import { AngularFireModule} from '@angular/fire/compat'
+import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { NgApexchartsModule } from 'ng-apexcharts';
-
-
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,4 +33,4 @@ import { AppComponent } from './app.component';
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-trade.page.scss'],
 })
 export class AddTradePage implements OnInit {
+  // Properties to store trade information
   symbol: string = '';
   buyPrice: number = 0;
   takeProfit: number = 0;
@@ -24,6 +25,7 @@ export class AddTradePage implements OnInit {
   ngOnInit() {
   }
 
+  // Function to save trade data
   async saveTrade() {
     try {
       await this.databaseManagerService.saveData(
@@ -41,6 +43,7 @@ export class AddTradePage implements OnInit {
     }
   }
 
+  // Function to show a success alert
   async showSuccessAlert() {
     const alert = await this.alertController.create({
       header: 'Success',
@@ -50,6 +53,7 @@ export class AddTradePage implements OnInit {
     await alert.present();
   }
 
+  // Function to show an error alert
   async showErrorAlert() {
     const alert = await this.alertController.create({
       header: 'Error',
@@ -59,6 +63,7 @@ export class AddTradePage implements OnInit {
     await alert.present();
   }
 
+  // Function to check if the form is valid
   isValidForm(): boolean {
     return !!this.symbol && !!this.buyPrice && !!this.takeProfit && !!this.stopLoss && !!this.notes;
   }
