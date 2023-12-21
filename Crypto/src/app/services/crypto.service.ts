@@ -56,4 +56,15 @@ export class CryptoService {
         throw error;
       });
   }
+
+  // Add this method to fetch historical data for any cryptocurrency
+  getHistory(cryptoId: string, interval: string): Promise<any> {
+    const url = `${this.apiUrl}/assets/${cryptoId.toLowerCase()}/history?interval=${interval}`;
+
+    return axios.get(url)
+      .then(response => response.data)
+      .catch(error => {
+        throw error;
+      });
+  }
 }

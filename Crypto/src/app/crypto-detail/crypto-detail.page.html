@@ -37,6 +37,29 @@
         <ion-button expand="full" href="{{ cryptoDetails?.explorer }}" target="_blank">
           Explore on Blockchain
         </ion-button>
+
+        <canvas id="cryptoChart"></canvas>
+
+        
+        <table style="width: 100%;">
+          <tr>
+            <td style="text-align: center;">
+              <select (change)="onTimeFrameChange($event)">
+                <option value="m1">1 Minute</option>
+                <option value="m5">5 Minutes</option>
+                <option value="m15">15 Minutes</option>
+                <option value="m30">30 Minutes</option>
+                <option value="h1">1 Hour</option>
+                <option value="h2">2 Hours</option>
+                <option value="h6">6 Hours</option>
+                <option value="h12">12 Hours</option>
+                <option value="d1">1 Day</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+        
+        
       </ion-card-content>
     </ion-card>
     <ion-button expand="full" routerLink="/">

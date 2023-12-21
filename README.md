@@ -16,7 +16,8 @@ Add a screenshot image of the application in use.
 ```MARKDOWN
 List the instructions step by step
     1. Run the command 'npm install' in the Crypto Dir.
-    3. After all the dependencies have installed run the command 'ionic serve' in the Crypto Dir.
+    2. After all the dependencies have installed run the command 'ionic serve' in the Crypto Dir.
+    3. Login Details for Website: Username: admin@admin.com Password: admin123
 ```
 
 ## Minimum Project Requirments
@@ -52,3 +53,4 @@ Discuss the issues you faced with creating your application. Provide possible so
 ## Resources
 
 * [Crypto API](https://docs.coincap.io/#d8fd6001-e127-448d-aadd-bfbfe2c89dbe) - Crypto API used to get crypto data
+* [Chart JS](https://www.chartjs.org/docs/latest/) - Chart JS to make charts
