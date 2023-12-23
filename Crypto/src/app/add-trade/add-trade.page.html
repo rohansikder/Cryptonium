@@ -16,23 +16,27 @@
       <ion-list>
         <ion-item>
           <ion-label position="stacked">Symbol</ion-label>
-          <ion-input placeholder="Symbol" required></ion-input>
+          <ion-input placeholder="Symbol" required [(ngModel)]="symbol"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Quantity</ion-label>
+          <ion-input placeholder="Quantity" required [(ngModel)]="quantity"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Buy Price</ion-label>
-          <ion-input type="number" placeholder="Buy Price" required></ion-input>
+          <ion-input type="number" placeholder="Buy Price" required [(ngModel)]="buyPrice"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Take Profit</ion-label>
-          <ion-input type="number" placeholder="Take Profit" required></ion-input>
+          <ion-input type="number" placeholder="Take Profit" required [(ngModel)]="takeProfit"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Stop Loss</ion-label>
-          <ion-input type="number" placeholder="Stop Loss" required></ion-input>
+          <ion-input type="number" placeholder="Stop Loss" required [(ngModel)]="stopLoss"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Notes</ion-label>
-          <ion-textarea placeholder="Notes" required></ion-textarea>
+          <ion-textarea placeholder="Notes" required [(ngModel)]="notes"></ion-textarea>
         </ion-item>
       </ion-list>
     </ion-card-content>

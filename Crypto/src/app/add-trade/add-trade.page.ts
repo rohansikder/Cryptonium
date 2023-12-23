@@ -15,6 +15,7 @@ export class AddTradePage implements OnInit {
   takeProfit: number = 0;
   stopLoss: number = 0;
   notes: string = '';
+  quantity: number = 0;
 
   constructor(
     private databaseManagerService: DatabaseManagerService,
@@ -33,7 +34,8 @@ export class AddTradePage implements OnInit {
         this.symbol,
         this.takeProfit,
         this.stopLoss,
-        this.notes
+        this.notes,
+        this.quantity
       );
       this.showSuccessAlert();
       this.router.navigate(['/tabs/tab2']);
@@ -65,6 +67,7 @@ export class AddTradePage implements OnInit {
 
   // Function to check if the form is valid
   isValidForm(): boolean {
-    return !!this.symbol && !!this.buyPrice && !!this.takeProfit && !!this.stopLoss && !!this.notes;
+    const validForm = !!this.symbol && !!this.buyPrice && !!this.takeProfit && !!this.stopLoss && !!this.notes && !!this.quantity;
+    return validForm;
   }
 }

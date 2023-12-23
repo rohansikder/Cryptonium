@@ -17,15 +17,20 @@
         <ion-card-title>Symbol: {{ trade.symbol }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p><strong>Buy Price:</strong> {{ trade.buyPrice | number: '1.2-2' }}</p>
-        <p><strong>Take Profit:</strong> {{ trade.takeProfit | number: '1.2-2' }}</p>
-        <p><strong>Stop Loss:</strong> {{ trade.stopLoss | number: '1.2-2' }}</p>
+        <p><strong>Buy Price:</strong> ${{ trade.buyPrice | number: '1.2-2' }}</p>
+        <p><strong>Quantity:</strong> {{ trade.quantity | number: '1.2-2' }}</p>
+        <p><strong>Total Investment:</strong> ${{ trade.buyPrice * trade.quantity | number: '1.2-2' }}</p>
+        <p><strong>Take Profit:</strong> ${{ trade.takeProfit | number: '1.2-2' }}</p>
+        <p><strong>Stop Loss:</strong> ${{ trade.stopLoss | number: '1.2-2' }}</p>
         <p><strong>Notes:</strong> {{ trade.notes }}</p>
-        <p><strong>Current Price:</strong> {{ trade.currentPrice | number: '1.2-2'}}</p>
+        <p><strong>Current Price:</strong> ${{ trade.currentPrice | number: '1.2-2' }}</p>
         <p><strong>Status:</strong> {{ trade.isProfit ? 'Profit' : 'Loss' }}</p>
         <p *ngIf="trade.isStopLossHit"><ion-badge color="danger">Stop Loss Hit</ion-badge></p>
         <p *ngIf="trade.isTakeProfitHit"><ion-badge color="success">Take Profit Hit</ion-badge></p>
-
+    
+        <p><strong>Profit/Loss:</strong> ${{ (trade.currentPrice - trade.buyPrice) * trade.quantity | number: '1.2-2' }}</p>
+        <p><strong>ROI (%):</strong> {{ ((trade.currentPrice - trade.buyPrice) / trade.buyPrice * 100) | number: '1.2-2' }}%</p>
+    
         <ion-button fill="outline" color="danger" slot="end" expand="full"  (click)="confirmDelete(trade)">
           <ion-icon name="trash"></ion-icon> Delete
         </ion-button>

@@ -44,7 +44,7 @@ export class DatabaseManagerService {
   }
 
   // Save trade data for the authenticated user.
-  async saveData(buyPrice: number, symbol: string, takeProfit: number, stopLoss: number, notes: string) {
+  async saveData(buyPrice: number, symbol: string, takeProfit: number, stopLoss: number, notes: string, quantity: number) {
     try {
       const user = await this.auth.currentUser;
       if (user) {
@@ -55,6 +55,7 @@ export class DatabaseManagerService {
           takeProfit,
           stopLoss,
           notes,
+          quantity,
           ownerEmail: userEmail
         };
         await this.firestore.collection('trades').add(data);

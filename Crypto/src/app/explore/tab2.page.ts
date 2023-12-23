@@ -49,9 +49,10 @@ export class Tab2Page {
   }
 
   // Update trade with current price and handle notifications
-  async updateTradeWithCurrentPrice(trade: { symbol: string; buyPrice: number; stopLoss: number; takeProfit: number; }) {
+  async updateTradeWithCurrentPrice(trade: { symbol: string; buyPrice: number; stopLoss: number; takeProfit: number; quantity:number}) {
     return this.cryptoService.getCryptoDetails(trade.symbol).then(data => {
       const currentPrice = parseFloat(data.data.priceUsd);
+      console.log(trade.quantity);
       const updatedTrade = {
         ...trade,
         currentPrice,

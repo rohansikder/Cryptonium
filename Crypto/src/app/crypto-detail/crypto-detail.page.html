@@ -34,13 +34,12 @@
         <p><strong>Supply:</strong> {{ cryptoDetails?.supply | number }} {{ cryptoDetails?.symbol }}</p>
         <p><strong>Max Supply:</strong> {{ cryptoDetails?.maxSupply | number }}</p>
         <p><strong>VWAP (24Hr):</strong> ${{ cryptoDetails?.vwap24Hr | number:'1.2-2' }}</p>
-        <ion-button expand="full" href="{{ cryptoDetails?.explorer }}" target="_blank">
+        <ion-button expand="full" href="{{ cryptoDetails?.explorer }}" target="_blank" shape="round">
           Explore on Blockchain
         </ion-button>
 
         <canvas id="cryptoChart"></canvas>
 
-        
         <table style="width: 100%;">
           <tr>
             <td style="text-align: center;">
@@ -62,7 +61,7 @@
         
       </ion-card-content>
     </ion-card>
-    <ion-button expand="full" routerLink="/">
+    <ion-button expand="full" routerLink="/" shape="round">
       Home
     </ion-button>
   </div>

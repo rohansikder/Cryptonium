@@ -33,17 +33,20 @@
           <ion-label position="floating">Password</ion-label>
           <ion-input type="password" [(ngModel)]="user.password" name="password" required></ion-input>
         </ion-item>
-        <ion-item>
-          <ion-button type="submit" color="primary">Login</ion-button>
-        </ion-item>
-        
+          <ion-button type="submit" color="primary" expand="full" shape="round">Login</ion-button> 
       </form>
     </ion-card-content>
   </ion-card>
 
   <ion-text color="medium">
-    <p>Forgot password? <a routerLink="/reset-password">Reset Password</a></p>
-    <p>Don’t have an account? <a routerLink="/signup">Signup now</a></p>
+    <p>
+      <a routerLink="/reset-password" class="ion-text-decoration ion-color-primary">Forgot password?</a>
+    </p>
+    <p>
+      <span class="signup-text">Don’t have an account? </span>
+      <a routerLink="/signup" class="ion-text-decoration ion-color-primary">Sign up now</a>
+    </p>
   </ion-text>
+  
 
 </ion-content>
