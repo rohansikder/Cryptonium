@@ -11,6 +11,50 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Dashboard</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label>Total Investment</ion-label>
+            <h2>${{ totalInvestment | number: '1.2-2' }}</h2>
+          </ion-col>
+          <ion-col>
+            <ion-label>Current Value</ion-label>
+            <h2>${{ currentValue | number: '1.2-2' }}</h2>
+          </ion-col>
+          <ion-col>
+            <ion-label>Net Profit/Loss</ion-label>
+            <h2>${{ netProfitLoss | number: '1.2-2' }}</h2>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label>Average Buy Price</ion-label>
+            <h2>${{ averageBuyPrice | number: '1.2-2' }}</h2>
+          </ion-col>
+          <ion-col>
+            <ion-label>Profitable Trades</ion-label>
+            <h2>{{ profitableTradesCount }}</h2>
+          </ion-col>
+          <ion-col>
+            <ion-label>Losing Trades</ion-label>
+            <h2>{{ losingTradesCount }}</h2>
+          </ion-col>
+        </ion-row>
+        <ion-grid>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="auto">
+              <ion-button (click)="exportTradesToCsv()" color="success">Export Trades to CSV</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
   <ion-list>
     <ion-card *ngFor="let trade of trades">
       <ion-card-header>
