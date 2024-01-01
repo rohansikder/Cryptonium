@@ -16,10 +16,18 @@
   <ion-list>
     <ion-card *ngFor="let crypto of filteredCryptoList" [routerLink]="['/crypto-detail', crypto.name]">
       <ion-card-header>
-        <ion-card-title>{{ crypto.name }}</ion-card-title>
+        <ion-card-title>{{ crypto.name }} <ion-icon name="arrow-forward-circle-outline"></ion-icon></ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        Price: ${{ crypto.priceUsd | number: '1.2-2' }}
+        <div>
+          Price: ${{ crypto.priceUsd | number: '1.2-2' }}
+        </div>
+        <div [ngClass]="{'positive': crypto.changePercent24Hr >= 0, 'negative': crypto.changePercent24Hr < 0}">
+          24h Change: {{ crypto.changePercent24Hr | number: '1.2-2' }}%
+        </div>
+        <div [ngClass]="{'positive': crypto.changePercent24Hr >= 0, 'negative': crypto.changePercent24Hr < 0}">
+          24h VWAP: ${{ crypto.vwap24Hr | number: '1.2-2' }}
+        </div>
       </ion-card-content>
     </ion-card>
   </ion-list>

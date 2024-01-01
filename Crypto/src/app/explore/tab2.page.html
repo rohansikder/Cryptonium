@@ -48,7 +48,7 @@
         <ion-grid>
           <ion-row class="ion-justify-content-center">
             <ion-col size="auto">
-              <ion-button (click)="exportTradesToCsv()" color="success">Export Trades to CSV</ion-button>
+              <ion-button (click)="exportTradesToCsv()" fill="outline" color="success">Export Trades to CSV</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>      </ion-grid>
@@ -75,7 +75,7 @@
         <p><strong>Profit/Loss:</strong> ${{ (trade.currentPrice - trade.buyPrice) * trade.quantity | number: '1.2-2' }}</p>
         <p><strong>ROI (%):</strong> {{ ((trade.currentPrice - trade.buyPrice) / trade.buyPrice * 100) | number: '1.2-2' }}%</p>
     
-        <ion-button fill="outline" color="danger" slot="end" expand="full"  (click)="confirmDelete(trade)">
+        <ion-button fill="solid" color="danger" slot="end" expand="full" shape="round"  (click)="confirmDelete(trade)">
           <ion-icon name="trash"></ion-icon> Delete
         </ion-button>
       </ion-card-content>

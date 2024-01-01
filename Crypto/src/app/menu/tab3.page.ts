@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-
+  
   constructor(
     private authService: AuthenticationService,
     private router: Router

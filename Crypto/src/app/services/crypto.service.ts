@@ -13,7 +13,7 @@ export class CryptoService {
   getTop20Cryptos() {
     return axios.get(`${this.apiUrl}/assets`, {
       params: {
-        limit: 20, // Get the top 20 assets
+        limit: 50, // Get the top 20 assets
         sort: 'marketCapUsd', // Sort by market capitalization
         order: 'desc' // Sort in descending order
       }

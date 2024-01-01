@@ -39,12 +39,13 @@
           <ion-textarea placeholder="Notes" required [(ngModel)]="notes"></ion-textarea>
         </ion-item>
       </ion-list>
+      <ion-button expand="full" (click)="saveTrade()" [disabled]="!isValidForm()" shape="round" color="success">
+        Save Trade
+      </ion-button>
     </ion-card-content>
   </ion-card>
 
-  <ion-button expand="full" (click)="saveTrade()" [disabled]="!isValidForm()" shape="round" color="success">
-    Save Trade
-  </ion-button>
+  
 
   <ion-button expand="full" routerLink="/" shape="round" color="primary">
     Home

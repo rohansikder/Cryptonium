@@ -13,7 +13,7 @@ export class CryptoDetailPage implements OnInit, AfterViewInit {
   cryptoDetails: any;
   cryptoName: string = '';
   currentTimeFrame: string = 'd1'; // Default timeframe for data display
-  chart: Chart | undefined; // Reference to the Chart.js chart instance
+  chart: Chart | undefined; 
 
   constructor(
     private route: ActivatedRoute, // ActivatedRoute to access route parameters
