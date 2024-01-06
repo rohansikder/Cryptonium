@@ -10,6 +10,47 @@
 
 Cryptonium is an advanced cryptocurrency tracking application that delivers real-time insights into the cryptocurrency market. With its user-friendly interface, Cryptonium offers a comprehensive view of the market dynamics, featuring live updates of the top cryptocurrencies. Users can effortlessly sign up using their email and password to access personalized features. Once logged in, Cryptonium allows users to input their cryptocurrency trades, manage their portfolio, and track the performance of their investments with precision.
 
+# Cryptonium
+
+<p float="left">
+  <img src="IOS Build Images/IMG_5714.jpeg" width="150" />
+  <img src="IOS Build Images/IMG_5715.jpeg" width="150" /> 
+  <img src="IOS Build Images/IMG_5716.jpeg" width="150" />
+</p>
+
+*Left to right: Watchlist, Bitcoin Details, Trades Dashboard.*
+
+<p float="left">
+  <img src="IOS Build Images/IMG_5718.jpeg" width="150" />
+  <img src="IOS Build Images/IMG_5719.jpeg" width="150" />
+  <img src="IOS Build Images/IMG_5720.jpeg" width="150" />
+</p>
+
+*Left to right: Add Trade, Menu, Login.*
+
+<p float="left">
+  <img src="IOS Build Images/IMG_5721.jpeg" width="150" />
+  <img src="IOS Build Images/IMG_5723.jpeg" width="150" />
+  <img src="IOS Build Images/IMG_5722.jpeg" width="150" />
+</p>
+
+*Left to right: Login Error Handling, Signup, Reset Password.*
+
+
+<p float="left">
+  <img src="IOS Build Images/IMG_5724.jpeg" width="150" />
+  <img src="IOS Build Images/IMG_5725.jpeg" width="150" />
+</p>
+
+*Theme Changes based on users themes settings.*
+
+<p float="left">
+  <img src="IOS Build Images/tradesCSV.png" width="500" />
+</p>
+
+*Example of .CSV file output.*
+
+
 ## Running the Application
 
 ```MARKDOWN
@@ -40,7 +81,7 @@ List the instructions step by step
 
 ## Project Requirments above and beyond
 
-Discuss any application features or design elements that show you went above and beyone basic requirments.
+This application has been built and tested on the iPhone 14 Pro Despite the app's readiness and functionality, it has not been deployed to the Play Store. The primary reason for this decision is the cost associated with publishing apps on commercial platforms. The Play Store is $99 per year, which is a recurring fee, which is a barrier this project.: [Cost to Publish an iOS App](https://nandbox.com/how-much-does-it-cost-to-publish-an-ios-app-on-the-app-store/).
 
 # Application Architecture
 
@@ -164,3 +205,6 @@ If starting over, more thorough initial testing of APIs would be conducted to en
 * [Chart JS](https://www.chartjs.org/docs/latest/) - Chart JS to make charts
 * [Angular](https://angular.io/) - Angular
 * [Ionic](https://ionicframework.com/docs/) - Ionic Framework
+* [IOS Build](https://www.youtube.com/watch?v=P-S6Dv2gP1U&ab_channel=IonicThemes) - Turn your Ionic App into an iOS App using Capacitor
+
+
