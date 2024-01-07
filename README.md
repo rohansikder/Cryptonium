@@ -119,29 +119,27 @@ The cryptocurrency tracking application is structured into several pages and com
 1. **Watchlist Page:**
     * Displays the current top cryptocurrencies, ranked by market capitalization.
     * Provides detailed information for each cryptocurrency, including current price, price changes, and market cap.
-    * Allows users to filter and sort the watchlist by various criteria.
 
 2. **Trades Page:**
     * Enables users to track their cryptocurrency trades over time.
     * Displays a list of all trades along with their details, such as trade date, cryptocurrency, buy/sell type, and price.
-    * Allows users to add new trades, edit existing trades, and delete completed trades.
+    * Allows users to add new trades, and delete completed trades.
 
 3. **Add Trade Page:**
     * Provides a form for users to input their trade information.
-    * Requires users to specify the cryptocurrency, trade type (buy/sell), trade date, and trade price.
+    * Requires users to specify the cryptocurrency and trade price.
     * Validates the trade information and adds it to the user's trades list.
 
 4. **Details Page:**
     * Presents in-depth information on a selected cryptocurrency.
     * Displays detailed statistics, including market cap, volume, and circulating supply.
     * Provides a historical price chart for the cryptocurrency.
-    * Links to relevant news and articles about the cryptocurrency.
 
 5. **Login/Signup Pages:**
     * Manage user authentication for the application.
     * Allow new users to sign up and create accounts.
     * Enable existing users to log in and access their account information.
-    * Handle user authentication using a secure authentication service like Firebase or Supabase.
+    * Handle user authentication using a secure authentication service such as Firebase .
 
 6. **Menu Page:**
     * Serves as a navigation hub to different sections of the application.
@@ -150,25 +148,6 @@ The cryptocurrency tracking application is structured into several pages and com
 ## Methods and Data Structures
 
 1. **API Service:**
-    * Handles all HTTP requests to the Crypto API.
-    * Manages data retrieval and updates from the API.
-    * Parses API responses and converts them into usable data models.
-
-2. **Authentication Service:**
-    * Manages user authentication states.
-    * Handles user login, logout, and session management.
-    * Authenticates users before allowing access to specific routes or features.
-
-3. **Data Models:**
-    * Define the structure of trade objects and user profiles.
-    * Encapsulate data related to trades, including trade date, cryptocurrency, buy/sell type, and price.
-    * Represent user information, including username, email, and authentication token.
-
-4. **Router Guards:**
-    * Protect routes based on the user's authentication state.
-    * Ensure that users are logged in before accessing certain pages or features.
-    * Prevent unauthorized access to restricted areas of the application.
-
     * Handles all HTTP requests to the Crypto API.
     * Manages data retrieval and updates from the API.
     * Parses API responses and converts them into usable data models.
