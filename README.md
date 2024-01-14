@@ -4,7 +4,10 @@
 
 **Title:** Cryptonium
 **Name:** Rohan Sikder
-**Student ID:** G00389052  
+**Student ID:** G00389052
+
+[<button style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;">Application Demonstration Video</button>](https://atlantictu-my.sharepoint.com/:v:/r/personal/g00389052_atu_ie/Documents/ACPADCryptoniumDemonstration.mov?csf=1&web=1&e=Un5fuC&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+
 
 ## Application Function
 
@@ -50,6 +53,38 @@ Cryptonium is an advanced cryptocurrency tracking application that delivers real
 
 *Example of .CSV file output.*
 
+# Project Setup Instructions
+
+## Prerequisites
+
+Before you begin, ensure you have the following tools installed on your system:
+
+1. **Node.js**: Node.js is required for npm. Download and install it from [Node.js official website](https://nodejs.org/).
+
+2. **npm (Node Package Manager)**: npm is included with Node.js installation. After installing Node.js, you can verify the installation of Node.js and npm by running the following commands in your terminal:
+
+    ```shell
+    node -v
+    npm -v
+    ```
+
+3. TypeScript: TypeScript can be installed via npm with the following command:
+    ```shell
+    npm install -g typescript
+    tsc -v
+    ```
+
+4. Ionic Framework: Install Ionic CLI.:
+    ```shell
+    npm install -g @ionic/cli
+    ionic -v
+    ```
+
+5. Angular CLI: Angular CLI is needed for Angular projects.:
+    ```shell
+    npm install -g @angular/cli
+    ng version
+    ```
 
 ## Running the Application
 
